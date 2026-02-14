@@ -1,29 +1,29 @@
 const messages = [
-  "I love you ",
-  "You make me smile ",
-  "Forever and always ",
-  "You are my sunshine ",
-  "Every moment with you is magic",
-  "You make my heart skip a beat ",
-  "I can’t stop thinking about you ",
-  "Life is better with you by my side",
-  "You’re my favorite hello and hardest goodbye ",
-  "You make ordinary moments extraordinary ",
-  "I love the way you laugh ",
-  "Every day with you feels like a dream ",
-  "You are my happiness and my home ",
-  "I fall in love with you more every day ",
-  "Your smile brightens my darkest days ",
-  "You’re my everything, my love ",
-  "I love holding your hand ",
-  "You make my heart full and my life brighter ",
-  "I cherish every memory we’ve made together ",
-  "You’re my favorite person in the whole world ",
-  "With you, I feel complete ",
-  "You’re the best part of my life ",
-  "I love the little things you do ",
-  "I can’t wait for all our adventures together ",
-  "You’re my safe place and my joy "
+  "I love youuuu ",
+  "You make me smileeee ",
+  "Forever and alwaysssss bbi ",
+  "You are my sunshineeee ",
+  "Every moment with you is magiccccc",
+  "You make my heart skip a beatttt ",
+  "I can’t stop thinking about youuuu ",
+  "Life is better with you by my sideeee",
+  "You’re my favorite hello and hardest goodbyeeee ",
+  "You make ordinary moments extraordinaryyyyy ",
+  "I love the way you laughhhh ",
+  "Every day with you feels like a dreammmm ",
+  "You are my happiness and my homeeeee ",
+  "I fall in love with you more every dayyyyy ",
+  "Your smile brightens my darkest daysssss ",
+  "You’re my everything, my loveeeee ",
+  "I love holding your handdddd ",
+  "You make my heart full and my life brighterrrrr ",
+  "I cherish every memory we’ve made togetherrrrr ",
+  "You’re my favorite person in the whole worlddddd ",
+  "With you, I feel completeeee ",
+  "You’re the best part of my lifeeeee ",
+  "I love the little things you dooooo ",
+  "I can’t wait for all our adventures togetherrrrr ",
+  "You’re my safe place and my joyyyyy "
 ];
 
 // Tracking score
@@ -57,7 +57,7 @@ function showMessage(heart) {
 
     const msg = document.createElement('div');
     msg.className = 'message';
-    msg.innerText = messages[Math.floor(Math.random() * messages.length)];
+    msg.innerHTML = messages[Math.floor(Math.random() * messages.length)];
 
     // Position message above heart
     const rect = heart.getBoundingClientRect();
