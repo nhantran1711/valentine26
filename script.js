@@ -2,7 +2,7 @@ let score = 0;
 const scoreDisplay = document.getElementById('score');
 const note = document.getElementById('note');
 
-const maxScore = 20; // when game ends
+const maxScore = 2; // when game ends
 
 const messages = [
   "I love youuuu ",
@@ -81,7 +81,7 @@ function showMessage(heart) {
     }, 2000);
 
     // End game after maxScore
-    if(score >= maxScore) {
+    if (score >= maxScore) {
         clearInterval(heartInterval); // stop spawning hearts
         // Remove all remaining hearts
         document.querySelectorAll('.heart').forEach(h => h.remove());
