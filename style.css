@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #ffe6f0; /* soft pink */
+  font-family: 'Arial', sans-serif;
+  position: relative;
+  height: 100vh;
+}
+
+.heart {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: red;
+  transform: rotate(-45deg);
+  cursor: pointer;
+  animation: floatUp 6s linear infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: red;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -20px;
+  left: 0;
+}
+.heart::after {
+  top: 0;
+  left: 20px;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh) rotate(-45deg); opacity: 1; }
+  100% { transform: translateY(-100px) rotate(-45deg); opacity: 0; }
+}
+
+.message {
+  position: absolute;
+  background: #fff0f5; /* light pink */
+  color: #900028; /* dark red text */
+  padding: 10px 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  font-size: 14px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.5s ease;
+  z-index: 1000; /* make sure it appears on top */
+}
+
+.message.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+/* Score*/
+
+#score {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(255,255,255,0.8);
+  color: #900028;
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 2000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
