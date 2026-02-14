@@ -2,7 +2,7 @@ let score = 0;
 const scoreDisplay = document.getElementById('score');
 const note = document.getElementById('note');
 
-const maxScore = 2; // when game ends
+const maxScore = 20; // when game ends
 
 const messages = [
     "I love youuuu ",
@@ -73,7 +73,19 @@ function createHeart() {
     }, 6000);
 }
 
+
+const bgMusic = document.getElementById('bg-music');
+let musicStarted = false;
+
+
 function showMessage(heart) {
+
+
+    if (!musicStarted) {
+        bgMusic.play().catch(err => console.log("Music blocked by browser:", err));
+        musicStarted = true;
+    }
+
     score++;
     scoreDisplay.innerText = `Score: ${score}`;
 
