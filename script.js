@@ -43,16 +43,31 @@ const messages = [
 
 let heartInterval; // store interval so we can stop it
 
+// rotate colours
+const colors = ['#FF4D6D', '#FFB6C1', '#FFC0CB', '#D291BC', '#FFD700']; // red, pink, purple, gold
+
 function createHeart() {
     const heart = document.createElement('div');
     heart.className = 'heart';
-    heart.style.left = Math.random() * (window.innerWidth - 50) + 'px';
+
+    // Random size
+    const size = 20 + Math.random() * 40; // 20px - 60px
+    heart.style.width = size + 'px';
+    heart.style.height = size + 'px';
+
+    // Random color
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    heart.style.background = color;
+    heart.style.setProperty('--heart-color', color); // for pseudo-elements
+
+    heart.style.left = Math.random() * (window.innerWidth - size) + 'px';
     heart.style.animationDuration = (4 + Math.random() * 3) + 's';
 
     heart.addEventListener('click', () => showMessage(heart));
 
     document.body.appendChild(heart);
 
+    // Remove heart after floating out
     setTimeout(() => {
         if (heart.parentNode) heart.remove();
     }, 6000);
