@@ -2,7 +2,7 @@ let score = 0;
 const scoreDisplay = document.getElementById('score');
 const note = document.getElementById('note');
 
-const maxScore = 20; // when game ends
+const maxScore = 2; // when game ends
 
 const messages = [
     "I love youuuu ",
