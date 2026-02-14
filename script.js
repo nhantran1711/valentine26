@@ -1,3 +1,9 @@
+let score = 0;
+const scoreDisplay = document.getElementById('score');
+const note = document.getElementById('note');
+
+const maxScore = 20; // when game ends
+
 const messages = [
   "I love youuuu ",
   "You make me smileeee ",
@@ -26,12 +32,7 @@ const messages = [
   "You’re my safe place and my joyyyyy "
 ];
 
-// Tracking score
-let score = 0
-const scoreDisplay = document.getElementById('score')
-
-
-
+let heartInterval; // store interval so we can stop it
 
 function createHeart() {
     const heart = document.createElement('div');
@@ -43,54 +44,51 @@ function createHeart() {
 
     document.body.appendChild(heart);
 
-    // Remove heart after floating out
     setTimeout(() => {
-    if (heart.parentNode) heart.remove();
+        if (heart.parentNode) heart.remove();
     }, 6000);
 }
 
 function showMessage(heart) {
-    // score update
-    score ++;
+    score++;
     scoreDisplay.innerText = `Score: ${score}`;
-
 
     const msg = document.createElement('div');
     msg.className = 'message';
     msg.innerHTML = messages[Math.floor(Math.random() * messages.length)];
+    document.body.appendChild(msg);
 
-    // Position message above heart
     const rect = heart.getBoundingClientRect();
     msg.style.left = rect.left + 'px';
-    msg.style.top = (rect.top - 50) + 'px';
-
-
-    document.body.appendChild(msg);
-    console.log(msg);
-
-    // Animate message in
+    msg.style.top = (rect.top - 70) + 'px';
     setTimeout(() => msg.classList.add('show'), 10);
 
-    // Launch confetti at heart position
+    // Confetti
     confetti({
         particleCount: 30,
         startVelocity: 20,
         spread: 60,
         origin: {
-            x: (rect.left + rect.width / 2) / window.innerWidth,
-            y: (rect.top + rect.height / 2) / window.innerHeight
+            x: (rect.left + rect.width/2) / window.innerWidth,
+            y: (rect.top + rect.height/2) / window.innerHeight
         },
         colors: ['#ff4d6d', '#ffb6c1', '#ffe6f0', '#ff69b4']
     });
 
-    // Remove message after 2 seconds
     setTimeout(() => msg.remove(), 2000);
-
-    // Remove heart after 2 seconds (so message can be seen)
     setTimeout(() => {
-    if (heart.parentNode) heart.remove();
+        if (heart.parentNode) heart.remove();
     }, 2000);
+
+    // End game after maxScore
+    if(score >= maxScore) {
+        clearInterval(heartInterval); // stop spawning hearts
+        // Remove all remaining hearts
+        document.querySelectorAll('.heart').forEach(h => h.remove());
+        // Show final note
+        note.style.display = 'flex';
+    }
 }
 
-// Spawn hearts every 500ms
-setInterval(createHeart, 500);
+// Start spawning hearts
+heartInterval = setInterval(createHeart, 500);
